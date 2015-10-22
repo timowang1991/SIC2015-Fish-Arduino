@@ -1,18 +1,19 @@
 #include "FishManager.h"
+#include <Servo.h>
 
 FishManager * fishManager;
 
 void setup(){
    Serial.begin(115200);
-   fishManager = new fishManager();
+   fishManager = new FishManager();
 }
 
 void loop(){
-   fishManager->update();
+   fishManager->Update();
 }
 
 void serialEvent(){
    while(Serial.available()){
-      fishManager->updateState(Serial.read());
+      fishManager->UpdateState(Serial.read());
    }
 }
