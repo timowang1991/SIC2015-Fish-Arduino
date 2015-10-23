@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define TAIL_MOTOR_PIN 3
+#define TAIL_MOTOR_PIN 9
 
 #define TAIL_NONE 0
 #define TAIL_FORWARD 1
