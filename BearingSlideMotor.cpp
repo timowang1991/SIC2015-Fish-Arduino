@@ -5,54 +5,39 @@ BearingSlideMotor::BearingSlideMotor(){
    pinMode(BEARING_SLIDE_MOTOR_PIN1, OUTPUT);
    currentPos = BEARING_SLIDE_TOTAL_LENGTH / 2;
    duration = 0;
-   digitalWrite(BEARING_SLIDE_MOTOR_PIN0, LOW);
-   digitalWrite(BEARING_SLIDE_MOTOR_PIN1, LOW); 
+   analogWrite(BEARING_SLIDE_MOTOR_PIN0, BEARING_SLIDE_V);
+   analogWrite(BEARING_SLIDE_MOTOR_PIN1, BEARING_SLIDE_V); 
 }
 
 void BearingSlideMotor::BearingSlideDown(){
-
-	currentPos += BEARING_SLIDE_DOWN_DELTA_POS_PER_DURATION;
-
-	if (currentPos <= BEARING_SLIDE_TOTAL_LENGTH)
-	{
     Serial.println("SlideDown");
 		duration = BEARING_SLIDE_STANDARD_DURATION * 1.5;
-		digitalWrite(BEARING_SLIDE_MOTOR_PIN0, LOW); 
-    digitalWrite(BEARING_SLIDE_MOTOR_PIN1, HIGH);   
-	}
-	else
-	{
-		currentPos -= BEARING_SLIDE_DOWN_DELTA_POS_PER_DURATION;
-	}
-	 Serial.println(currentPos);
+		analogWrite(BEARING_SLIDE_MOTOR_PIN0, BEARING_SLIDE_V); 
+    analogWrite(BEARING_SLIDE_MOTOR_PIN1, BEARING_SLIDE_V);   
 }
 
 void BearingSlideMotor::BearingSlideUp(){
-   currentPos -= BEARING_SLIDE_UP_DELTA_POS_PER_DURATION;
-  
-   if (currentPos >= 0)
-	{
     Serial.println("SlideUP");
-		duration = BEARING_SLIDE_STANDARD_DURATION / 5;
-		digitalWrite(BEARING_SLIDE_MOTOR_PIN0, HIGH); 
-    digitalWrite(BEARING_SLIDE_MOTOR_PIN1, LOW); 
-	}
-	else
-	{
-		currentPos += BEARING_SLIDE_UP_DELTA_POS_PER_DURATION;
-	}
-  Serial.println(currentPos);
+		analogWrite(BEARING_SLIDE_MOTOR_PIN0, BEARING_SLIDE_V); 
+    analogWrite(BEARING_SLIDE_MOTOR_PIN1, BEARING_SLIDE_V); 
 }
 
-void BearingSlideMotor::Update(unsigned long deltaTime){
-	if(duration > deltaTime)
-   {
-   		duration -= deltaTime;
-   }
-   else
-   {
-   		digitalWrite(BEARING_SLIDE_MOTOR_PIN0, LOW); 
-    	digitalWrite(BEARING_SLIDE_MOTOR_PIN1, LOW); 
-    	duration = 0;
-   }
+void BearingSlideMotor::BearingSlideStop(){
+    Serial.println("SlideSTOP");
+    analogWrite(BEARING_SLIDE_MOTOR_PIN0, BEARING_SLIDE_V); 
+    analogWrite(BEARING_SLIDE_MOTOR_PIN1, BEARING_SLIDE_V); 
 }
+
+//
+//void BearingSlideMotor::Update(unsigned long deltaTime){
+//	if(duration > deltaTime)
+//   {
+//   		duration -= deltaTime;
+//   }
+//   else
+//   {
+//   		digitalWrite(BEARING_SLIDE_MOTOR_PIN0, LOW); 
+//    	digitalWrite(BEARING_SLIDE_MOTOR_PIN1, LOW); 
+//    	duration = 0;
+//   }
+//}

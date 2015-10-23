@@ -9,6 +9,7 @@
 #define BEARING_SLIDE_DOWN_DELTA_POS_PER_DURATION 10
 #define BEARING_SLIDE_UP_DELTA_POS_PER_DURATION 10
 #define BEARING_SLIDE_TOTAL_LENGTH 500
+#define BEARING_SLIDE_V 300
 
 class BearingSlideMotor
 {
@@ -16,7 +17,8 @@ public:
    BearingSlideMotor();
    void BearingSlideDown();
    void BearingSlideUp();
-   void Update(unsigned long deltaTime);
+   void BearingSlideStop();
+//   void Update(unsigned long deltaTime);
 private:
    unsigned long duration;
    int currentPos;

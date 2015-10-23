@@ -20,7 +20,7 @@ void FishManager::Update(){
    }
    
    tailMotor->Update(time_passed);
-   bearingSlideMotor->Update(time_passed);
+//   bearingSlideMotor->Update(time_passed);
    finMotor->Update(time_passed);
 
    previous_time = current_time;
@@ -41,20 +41,24 @@ void FishManager::UpdateState(char newState){
          Serial.println("DOWN");
          break;
       case LEFT:
+         bearingSlideMotor->BearingSlideStop();
          tailMotor->TurnLeft();
          Serial.println("LEFT");
          break;
       case RIGHT:
+         bearingSlideMotor->BearingSlideStop();
          tailMotor->TurnRight();
          Serial.println("RIGHT");
          break;
       case FORWARD:
+         bearingSlideMotor->BearingSlideStop();
          tailMotor->Forward();
          Serial.println("FORWARD");
          break;
       case OPEN_MOUTH:
       case CLOSE_MOUTH:
       case NONE:
+         bearingSlideMotor->BearingSlideStop();
          tailMotor->Stop();
          Serial.println("NONE");
          break;
