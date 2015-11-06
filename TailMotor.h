@@ -4,13 +4,13 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define TAIL_MOTOR_PIN 9
+#define TAIL_MOTOR_PIN 0
 
 #define TAIL_NONE 0
 #define TAIL_FORWARD 1
 #define TAIL_LEFT 2
 #define TAIL_RIGHT 3
-#define TAIL_DELAY_TIME 15
+#define TAIL_DELAY_TIME 5
 
 class TailMotor
 {

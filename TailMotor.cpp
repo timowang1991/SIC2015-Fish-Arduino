@@ -39,7 +39,7 @@ void TailMotor::Update(unsigned long deltaTime)
       	{
       		if(finalPos >= 180)
 	      	{
-	      		finalPos = 0;
+	      		finalPos = 60;
 	      	}
 	      	else
 	      	{
@@ -51,7 +51,7 @@ void TailMotor::Update(unsigned long deltaTime)
       	finalPos = 180;
      	break;
       case TAIL_RIGHT:
-      	finalPos = 0;
+      	finalPos = 30;
         break;
    }
 

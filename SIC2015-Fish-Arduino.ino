@@ -10,10 +10,12 @@ void setup(){
 
 void loop(){
    fishManager->Update();
+   serialEvent();
 }
 
 void serialEvent(){
    while(Serial.available()){
+//      Serial.println((char)Serial.read());
       fishManager->UpdateState(Serial.read());
    }
 }
