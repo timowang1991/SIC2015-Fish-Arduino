@@ -20,8 +20,8 @@ void FishManager::Update(){
    }
    
    tailMotor->Update(time_passed);
-//   bearingSlideMotor->Update(time_passed);
-   finMotor->Update(time_passed);
+   bearingSlideMotor->Update(time_passed);
+   // finMotor->Update(time_passed);
 
    previous_time = current_time;
 }
@@ -31,36 +31,41 @@ void FishManager::UpdateState(char newState){
 
    switch(state){
       case UP:
-         bearingSlideMotor->BearingSlideUp();
+//         bearingSlideMotor->BearingSlideUp();
          tailMotor->Forward();
-         Serial.println("UP");
+//         Serial.println("UP");
          break;
       case DOWN:
-         bearingSlideMotor->BearingSlideDown();
+//         bearingSlideMotor->BearingSlideDown();
          tailMotor->Forward();
-         Serial.println("DOWN");
+//         Serial.println("DOWN");
          break;
       case LEFT:
-         bearingSlideMotor->BearingSlideStop();
+         // bearingSlideMotor->BearingSlideStop();
+//         bearingSlideMotor->BearingSlideMiddle();
          tailMotor->TurnLeft();
-         Serial.println("LEFT");
+//         Serial.println("LEFT");
          break;
       case RIGHT:
-         bearingSlideMotor->BearingSlideStop();
+         // bearingSlideMotor->BearingSlideStop();
+//         bearingSlideMotor->BearingSlideMiddle();
          tailMotor->TurnRight();
-         Serial.println("RIGHT");
+//         Serial.println("RIGHT");
          break;
       case FORWARD:
-         bearingSlideMotor->BearingSlideStop();
+         // bearingSlideMotor->BearingSlideStop();
+//         bearingSlideMotor->BearingSlideMiddle();
          tailMotor->Forward();
-         Serial.println("FORWARD");
+//         Serial.println("FORWARD");
          break;
       case OPEN_MOUTH:
       case CLOSE_MOUTH:
       case NONE:
-         bearingSlideMotor->BearingSlideStop();
+//         bearingSlideMotor->BearingSlideStop();
          tailMotor->Stop();
          Serial.println("NONE");
+         break;
+      default:
          break;
    }
 }

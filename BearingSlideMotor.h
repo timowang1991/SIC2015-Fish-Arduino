@@ -12,6 +12,12 @@
 #define BEARING_SLIDE_HIGH_V 255
 #define BEARING_SLIDE_GROUND_V 0
 
+enum BearingState {
+   UP,
+   DOWN,
+   MIDDLE
+};
+
 class BearingSlideMotor
 {
 public:
@@ -19,10 +25,12 @@ public:
    void BearingSlideDown();
    void BearingSlideUp();
    void BearingSlideStop();
-//   void Update(unsigned long deltaTime);
+   void BearingSlideMiddle();
+   void Update(unsigned long deltaTime);
 private:
    unsigned long duration;
    int currentPos;
+   int lastState;
 };
 
 #endif
